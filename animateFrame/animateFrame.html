@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<img id="mytag" src="material flow analysis.jpg"/>
+
+<script>
+var elementRef = document.querySelector('#mytag');
+var Hcount = 0;
+// var Vcount = 0;
+function animateCirle(){
+//setTimeout(function(){
+Hcount += 5;
+if(Hcount == 950){
+	Hcount = 5;
+	// Vcount += 100;
+	// elementRef.style.top=Vcount + "px";
+}
+elementRef.style.position="absolute";
+elementRef.style.left=Hcount + "px";
+
+
+window.requestAnimationFrame(animateCirle);
+//animateCircle();
+//},2000);
+}
+animateCirle();
+</script>
+</body>
+</html> 

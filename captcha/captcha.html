@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+         <head>
+         <style>
+         	#mainCaptcha {
+                font: bold 30px Georgia;
+                color: lightblue;
+                padding: 10px 30px;
+                width: 170px;
+                letter-spacing: 3px;
+                background-color: gray;
+            }
+         </style>
+             <script type="text/javascript">
+                 function Captcha(){
+                      var alpha = [];
+                      for(var charAscii=48;charAscii<=122;charAscii++){
+                        if((charAscii >= 97 && charAscii <= 122) || (charAscii >= 65 && charAscii <= 90) || (charAscii >= 48 && charAscii <= 57)){
+                           alpha.push(String.fromCharCode(charAscii));
+                        }
+                      }
+                     var sixCharArray = ["a","b","c","d","e","f","g"];
+                     var a,b,c,d,e,f,g;
+                     code='';
+                     for(i=0;i<sixCharArray.length;i++){
+                     	sixCharArray[i] = alpha[Math.floor(Math.random() * alpha.length)];
+                        code += sixCharArray[i];
+                     }
+                    document.getElementById("mainCaptcha").innerHTML = code
+                  }
+                  function ValidCaptcha(){
+                      if (code == document.getElementById('txtInput').value){
+                        return true;
+                      }
+                      else{        
+                        return false;
+                      }
+                  }
+             </script>    
+        </head>
+     <body onload="Captcha();">
+        <table>
+          <tr>
+           <td>
+                 Text Captcha<br />
+           </td>
+          </tr>
+          <tr>
+           <td>
+             <div id="mainCaptcha"></div>
+              <input type="button" id="refresh" value="Refresh" onclick="Captcha();" />
+           </td>
+          </tr>
+          <tr>
+           <td>
+            <input type="text" id="txtInput" onCopy="return false" onDrag="return false" onDrop="return false" onPaste="return false" autocomplete=off/> 
+          </td>
+         </tr>
+         <tr>
+          <td>
+            <input type="button" value="Check" onclick="alert(ValidCaptcha());"/>
+          </td>
+        </tr>
+      </table>
+    </body>
+ </html>
